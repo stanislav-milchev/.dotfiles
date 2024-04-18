@@ -4,6 +4,7 @@ local local_plugins = {
         "harpoon",
         dir = "~/personal/harpoon",
         config = function()
+
             local harpoon = require("harpoon")
 
             harpoon:setup()
@@ -20,12 +21,10 @@ local local_plugins = {
     {
         "vim-apm", dir = "~/personal/vim-apm",
         config = function()
-            --[[
             local apm = require("vim-apm")
 
             apm:setup({})
             vim.keymap.set("n", "<leader>apm", function() apm:toggle_monitor() end)
-            --]]
         end
     },
 }
