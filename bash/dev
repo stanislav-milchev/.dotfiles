@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rm -rf ~/.bashrc
+ln -s $(pwd)/.bashrc ~/.bashrc
+echo "Done"
+
