@@ -88,5 +88,6 @@ return {
                 prefix = "",
             },
         })
+        vim.api.nvim_set_keymap('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
     end
 }

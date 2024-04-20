@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+rm ~/.tmux.conf
+echo 'Deleted previous configs'
+ln -s $(pwd)/.tmux.conf ~/.tmux.conf
+mkdir -p ~/.tmux/plugins
+ln -s $(pwd)/plugins ~/.tmux/plugins/tpm
+echo 'Shits copied LFG'
