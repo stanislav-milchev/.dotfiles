@@ -3,6 +3,7 @@ require("theprimeagen.remap")
 require("theprimeagen.macros")
 require("theprimeagen.lazy_init")
 
+vim.cmd[[colorscheme tokyonight]]
 -- DO.not
 -- DO NOT INCLUDE THIS
 
