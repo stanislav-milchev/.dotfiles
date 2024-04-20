@@ -25,6 +25,8 @@ return {
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+        vim.keymap.set('n', 'gi', builtin.lsp_implementations, {})
+        vim.keymap.set('n', 'gt', builtin.lsp_type_definitions, {})
     end
 }
 
