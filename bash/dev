@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-rm -rf ~/.bashrc
-ln -s $(pwd)/.bashrc ~/.bashrc
+if [[ -n "${SPACE}" ]]; then
+  echo "Work space detected"
+  FILE=".bashrc.work"
+else
+  echo "Generic space detected"
+  FILE=".bashrc"
+fi
+
+ln -sf $(pwd)/$FILE ~/.bashrc
 echo "Done"
 

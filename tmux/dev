@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-rm ~/.tmux.conf
-echo 'Deleted previous configs'
-ln -s $(pwd)/.tmux.conf ~/.tmux.conf
-mkdir -p ~/.tmux/plugins
-ln -s $(pwd)/plugins ~/.tmux/plugins/tpm
+if [[ -n "${SPACE}" ]]; then
+  echo "Work space detected"
+  FILE=".tmux.conf.work"
+else
+  echo "Generic space detected"
+  FILE=".tmux.conf"
+fi
+
+ln -sf $(pwd)/$FILE ~/.tmux.conf
 echo 'Shits copied LFG'
