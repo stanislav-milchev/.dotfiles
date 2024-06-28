@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ "$#" -ne 2 ]; then
+  echo "Usage: $0 <file1.json> <file2.json>"
+  exit 1
+fi
+
+diff <(jq --sort-keys . "$1") <(jq --sort-keys . "$2") | nvim -

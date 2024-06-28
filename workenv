@@ -1,0 +1,16 @@
+#!/bin/bash
+
+ws8=8
+
+processes=(
+    "vpn"
+    "sp"
+    "tls"
+)
+
+for process in "${processes[@]}"; do
+    gnome-terminal --name="workenv_$process" -- bash -ci "$process; exec bash"
+    sleep 0.5
+
+done
+

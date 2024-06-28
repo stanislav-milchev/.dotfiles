@@ -1,0 +1,7 @@
+{
+  "waitForEnterForFilteredHints": false,
+  "linkHintNumbers": "asdfghjkl",
+  "grabBackFocus": true,
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ncs: http://crawler-stats.arbisoft.edtd.net/crawler/%s\nghe: https://github.com/EDITD/%s\nghs: https://github.com/stanislav-milchev/%s\nss: https://spider-sense.edtd.net/crawler/%s\nsst: http://crawler-stats.arbisoft.edtd.net/staging/pm-skuscraper-pr-%s",
+  "settingsVersion": "2.1.2"
+}

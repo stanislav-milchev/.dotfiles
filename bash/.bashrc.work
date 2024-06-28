@@ -119,8 +119,7 @@ fi
 
 
 
-alias vpn='sudo openvpn --config ${HOME}/.cert/client-edited-mfa.ovpn --auth-user-pass ${HOME}/.cert/client-edited-mfa.credentials'
-alias vpn2='openvpn2 --config ${HOME}/apps/vpn-config/vpn.ovpn --auth-user-pass ${HOME}/.cert/client-edited-mfa.credentials'
+alias vpn='openvpn2 --config ${HOME}/apps/vpn-config/vpn.ovpn --auth-user-pass ${HOME}/.cert/client-edited-mfa.credentials'
 alias lc='tac ~/apps/skuscraper/output.txt | grep -B 27 -A 12 -m 1 elapsed_time_seconds | tac'
 
 
@@ -160,3 +159,9 @@ export SPACE=WORK
 export SMARTPROXY_TLS_UNBLOCKER_POP_HOST=localhost
 export SMARTPROXY_TLS_UNBLOCKER_POP_PORT=19904
 export DEV_SMART_PROXY_PORT=8080
+export PATH=/usr/bin:/home/stanislav/.nvm/versions/node/v18.16.0/bin:/home/stanislav/.pyenv/plugins/pyenv-virtualenv/shims:/home/stanislav/.pyenv/shims:/opt/viber/:/usr/bin:/usr/bin:/usr/bin:/usr/bin:/home/stanislav/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/opt/nvim-linux64/bin:/usr/local/go/bin:/home/stanislav/.local/bin:/home/stanislav/go/bin
+export DOCKER_HOST=unix:///run/user/1000/docker.sock
+export PATH=/usr/bin:/home/stanislav/.nvm/versions/node/v18.16.0/bin:/home/stanislav/.pyenv/plugins/pyenv-virtualenv/shims:/home/stanislav/.pyenv/shims:/opt/viber/:/usr/bin:/usr/bin:/usr/bin:/usr/bin:/home/stanislav/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/opt/nvim-linux64/bin:/usr/local/go/bin:/home/stanislav/.local/bin:/home/stanislav/go/bin
+export DOCKER_HOST=unix:///run/user/1000/docker.sock
+export PATH=/usr/bin:/home/stanislav/.nvm/versions/node/v18.16.0/bin:/home/stanislav/.pyenv/plugins/pyenv-virtualenv/shims:/home/stanislav/.pyenv/shims:/opt/viber/:/usr/bin:/usr/bin:/usr/bin:/usr/bin:/home/stanislav/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/opt/nvim-linux64/bin:/usr/local/go/bin:/home/stanislav/.local/bin:/home/stanislav/go/bin
+export DOCKER_HOST=unix:///run/user/1000/docker.sock

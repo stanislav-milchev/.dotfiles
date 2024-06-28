@@ -31,10 +31,11 @@ return {
                 "tsserver",
                 "pyright",
                 "gopls",
+                "jsonls",
+                "yamlls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
