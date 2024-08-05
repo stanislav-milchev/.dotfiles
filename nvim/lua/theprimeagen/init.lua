@@ -31,6 +31,11 @@ vim.filetype.add({
     }
 })
 
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+    pattern = "*.tmpl",
+    command = "set filetype=templ",
+})
+
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',

@@ -31,8 +31,7 @@ return {
                 "tsserver",
                 "pyright",
                 "gopls",
-                "jsonls",
-                "yamlls",
+                "templ",
             },
             handlers = {
                 function(server_name) -- default handler (optional)

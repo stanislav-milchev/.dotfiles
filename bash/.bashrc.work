@@ -137,10 +137,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+. /usr/share/autojump/autojump.sh
+
 # ALIASES
 alias vim=nvim
 alias vim.config="vim ~/.config/nvim"
 alias vim.bash="vim ~/.bashrc"
+alias vim.i3="vim ~/.config/i3/config"
+alias vim.tmux="vim ~/.tmux.conf"
+alias vim.ala="vim ~/.config/alacritty/alacritty.toml"
 
 alias tls="cd ~/apps/tls-unblocker-pop/; uvicorn app.main:app --reload --port 19904 --host 0.0.0.0 --no-access-log"
 alias sp="cd ~/apps/smart-proxy/; node bin/server.js"
@@ -150,18 +155,20 @@ alias vim.tls="cd ~/apps/tls-unblocker-pop/; vim ."
 alias vim.hydra="cd ~/apps/hydra/; vim ."
 alias vim.smart="cd ~/apps/smart-proxy/; vim ."
 
-alias tmuxsku="tmux a -t skuscraper"
-
 alias viber="nohup Viber &"
+
+# git
+alias gs="git status"
+alias gf="git commit --fixup"
+alias gc="git commit -m"
+alias gol="git log --oneline"
+alias gg="git log --oneline --graph"
 
 # ENVs
 export SPACE=WORK
 export SMARTPROXY_TLS_UNBLOCKER_POP_HOST=localhost
 export SMARTPROXY_TLS_UNBLOCKER_POP_PORT=19904
 export DEV_SMART_PROXY_PORT=8080
-export PATH=/usr/bin:/home/stanislav/.nvm/versions/node/v18.16.0/bin:/home/stanislav/.pyenv/plugins/pyenv-virtualenv/shims:/home/stanislav/.pyenv/shims:/opt/viber/:/usr/bin:/usr/bin:/usr/bin:/usr/bin:/home/stanislav/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/opt/nvim-linux64/bin:/usr/local/go/bin:/home/stanislav/.local/bin:/home/stanislav/go/bin
-export DOCKER_HOST=unix:///run/user/1000/docker.sock
-export PATH=/usr/bin:/home/stanislav/.nvm/versions/node/v18.16.0/bin:/home/stanislav/.pyenv/plugins/pyenv-virtualenv/shims:/home/stanislav/.pyenv/shims:/opt/viber/:/usr/bin:/usr/bin:/usr/bin:/usr/bin:/home/stanislav/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/opt/nvim-linux64/bin:/usr/local/go/bin:/home/stanislav/.local/bin:/home/stanislav/go/bin
-export DOCKER_HOST=unix:///run/user/1000/docker.sock
-export PATH=/usr/bin:/home/stanislav/.nvm/versions/node/v18.16.0/bin:/home/stanislav/.pyenv/plugins/pyenv-virtualenv/shims:/home/stanislav/.pyenv/shims:/opt/viber/:/usr/bin:/usr/bin:/usr/bin:/usr/bin:/home/stanislav/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/opt/nvim-linux64/bin:/usr/local/go/bin:/home/stanislav/.local/bin:/home/stanislav/go/bin
-export DOCKER_HOST=unix:///run/user/1000/docker.sock
+
+export EDITOR=nvim
+export VISUAL=nvim

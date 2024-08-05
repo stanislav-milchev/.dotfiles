@@ -1,16 +1,14 @@
 #!/bin/bash
 
-ws8=8
-
+# Array of processes
 processes=(
     "vpn"
     "sp"
     "tls"
 )
 
+# Loop through each process and spawn an Alacritty instance
 for process in "${processes[@]}"; do
-    gnome-terminal --name="workenv_$process" -- bash -ci "$process; exec bash"
+    alacritty --class=Alacritty_$process --command bash -ci '$process; exec bash'
     sleep 0.5
-
 done
-
