@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rm -rf ~/.config/i3
+echo 'Deleted previous configs'
+ln -s $(pwd) ~/.config/
+echo 'Shits copied LFG'
