@@ -8,7 +8,7 @@ return {
         local neogen = require("neogen")
 
         neogen.setup({
-            snippet_engine = "luasnip"
+            snippet_engine = "nvim"
         })
 
         vim.keymap.set("n", "<leader>nf", function()

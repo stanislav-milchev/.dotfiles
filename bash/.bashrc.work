@@ -137,6 +137,25 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+# SOURCING
+# git
+. ~/personal/git/contrib/completion/git-prompt.sh
+
+# arandr
+. ~/.screenlayout/screenconfig.sh
+
+
+# Colors and styles
+BOLD="\[\033[1m\]"
+RESET="\[\033[0m\]"
+CWD_COLOR="\[\033[0;34m\]"  # Choose your preferred color, 34 is blue
+
+# Git prompt settings
+GIT_PS1_SHOWCOLORHINTS=1
+
+# Set the prompt
+export PS1="${BOLD}${CWD_COLOR}\w${RESET}\$(__git_ps1 ' (%s)')${RESET}\$ "
+
 . /usr/share/autojump/autojump.sh
 
 # ALIASES
