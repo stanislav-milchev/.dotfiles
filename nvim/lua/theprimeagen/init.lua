@@ -75,3 +75,11 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
 vim.g.have_nerd_font = true
+
+
+-- Load the plugin
+require('ghnav')
+
+-- Map to a key for convenience
+vim.api.nvim_set_keymap('n', '<leader>gh', ':lua require("ghnav").open_in_github()<CR>', { noremap = true, silent = true })
+

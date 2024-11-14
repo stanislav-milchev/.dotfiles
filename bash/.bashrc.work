@@ -176,6 +176,12 @@ alias vim.smart="cd ~/apps/smart-proxy/; vim ."
 
 alias viber="nohup Viber &"
 
+# ktd qol
+alias ks="ktd status"
+alias kl="ktd status | grep '^ ' | awk '{print \$3}' | fzf | xargs ktd logs"
+alias ke="ktd status | grep '^ ' | awk '{print \$3}' | fzf | xargs -I {} tmux split-window -h 'ktd enter {}'"
+alias ku="ktd status | grep '^ ' | awk '{print \$3}' | fzf | xargs ktd up"
+
 # git
 alias gs="git status"
 alias gf="git commit --fixup"
@@ -185,9 +191,11 @@ alias gg="git log --oneline --graph"
 
 # ENVs
 export SPACE=WORK
+export DEV_SMART_PROXY_PORT=8080
 export SMARTPROXY_TLS_UNBLOCKER_POP_HOST=localhost
 export SMARTPROXY_TLS_UNBLOCKER_POP_PORT=19904
-export DEV_SMART_PROXY_PORT=8080
+export SMARTPROXY_BROWSER_FARM_HOST=localhost
+export SMARTPROXY_BROWSER_FARM_PORT=23505
 
 export EDITOR=nvim
 export VISUAL=nvim
