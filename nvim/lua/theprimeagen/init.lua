@@ -77,9 +77,8 @@ vim.g.netrw_winsize = 25
 vim.g.have_nerd_font = true
 
 
--- Load the plugin
+-- github navigate
 require('ghnav')
-
--- Map to a key for convenience
 vim.api.nvim_set_keymap('n', '<leader>gh', ':lua require("ghnav").open_in_github()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>gh', ':<C-u>lua require("ghnav").open_in_github()<CR>', { noremap = true, silent = true })
 

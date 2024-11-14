@@ -1,9 +1,5 @@
 local M = {}
 
-local function debug_log(message)
-  vim.notify("[GitHub Navigator Debug]: " .. message, vim.log.levels.INFO)
-end
-
 local function get_git_repo_root()
   local handle = io.popen("git rev-parse --show-toplevel 2>/dev/null")
   if not handle then return nil end
@@ -22,8 +18,10 @@ local function get_relative_file_path()
   return file_path:sub(#repo_root + 2)
 end
 
-local function get_current_line_number()
-  return vim.fn.line(".")
+local function get_selected_lines()
+  local start_line = vim.fn.line("'<")
+  local end_line = vim.fn.line("'>")
+  return start_line, end_line
 end
 
 local function get_github_url()
@@ -46,10 +44,13 @@ local function get_github_url()
   local file_path = get_relative_file_path()
   if not file_path then return nil end
 
-  local line_number = get_current_line_number()
-  return string.format("%s/blob/main/%s#L%d", origin_url, file_path, line_number)
+  local start_line, end_line = get_selected_lines()
+  if start_line == end_line then
+    return string.format("%s/blob/main/%s#L%d", origin_url, file_path, start_line)
+  else
+    return string.format("%s/blob/main/%s#L%d-L%d", origin_url, file_path, start_line, end_line)
+  end
 end
-
 
 function M.open_in_github()
   local url = get_github_url()
@@ -79,4 +80,3 @@ function M.open_in_github()
 end
 
 return M
-
