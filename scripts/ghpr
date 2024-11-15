@@ -49,6 +49,12 @@ if [ -z "$BODY" ]; then
     exit 1
 fi
 
-gh pr create --title "$TITLE" --body "$BODY" --web
+if gh pr create --title "$TITLE" --body "$BODY"; then
+    gh pr view --web
+else
+    echo "Error: Failed to create the pull request."
+    rm "$TEMP_FILE"
+    exit 1
+fi
 
 rm "$TEMP_FILE"
