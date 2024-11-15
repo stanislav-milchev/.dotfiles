@@ -33,7 +33,7 @@ fi
 
 TEMP_FILE=$(mktemp)
 
-xdg-open "$TEMP_FILE"
+$VISUAL "$TEMP_FILE"
 
 TITLE=$(head -n 1 "$TEMP_FILE")
 
