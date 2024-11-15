@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TEMP_FILE=$(mktemp)
+nvim "$TEMP_FILE"
+
+TITLE=$(head -n 1 "$TEMP_FILE")
+BODY=$(tail -n +2 "$TEMP_FILE")
+
+gh pr create --title "$TITLE" --body "$BODY"
+
+rm "$TEMP_FILE"
