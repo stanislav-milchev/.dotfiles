@@ -49,6 +49,6 @@ if [ -z "$BODY" ]; then
     exit 1
 fi
 
-gh pr create --title "$TITLE" --body "$BODY"
+gh pr create --title "$TITLE" --body "$BODY" --web
 
 rm "$TEMP_FILE"
