@@ -32,11 +32,9 @@ if [ "$LOCAL" != "$REMOTE" ]; then
 fi
 
 TEMP_FILE=$(mktemp)
-
-$VISUAL "$TEMP_FILE"
+$EDITOR "$TEMP_FILE"
 
 TITLE=$(head -n 1 "$TEMP_FILE")
-
 BODY=$(tail -n +2 "$TEMP_FILE")
 
 if [ -z "$TITLE" ]; then
