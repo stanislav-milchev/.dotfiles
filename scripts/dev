@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 ln -svf $(pwd)/* ~/.local/bin/
-echo 'Shits copied LFG'
+echo 'Done'

@@ -9,4 +9,4 @@ else
 fi
 
 ln -sf $(pwd)/$FILE ~/.tmux.conf
-echo 'Shits copied LFG'
+echo 'Done'

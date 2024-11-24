@@ -3,4 +3,4 @@
 rm -rf ~/.config/nvim
 echo 'Deleted previous configs'
 ln -s $(pwd) ~/.config/nvim
-echo 'Shits copied LFG'
+echo 'Done'
