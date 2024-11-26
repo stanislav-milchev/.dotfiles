@@ -1,0 +1,16 @@
+[user]
+	name = stanislav-milchev
+	email = stanislav.milchev@edited.com
+[core]
+	autocrlf = input
+[alias]
+	co = checkout
+    cf = ! git log --oneline | fzf | awk '{print $1}' | xargs git commit --fixup
+    ri = ! git log --oneline | fzf | awk '{print $1}' | xargs git rebase -i
+    rs = ! git log --oneline | fzf | awk '{print $1}' | xargs git rebase -i --autosquash
+    a = ! git status -s | fzf -m | awk '{print $2}' | xargs git add
+[push]
+	autoSetupRemote = true
+	default = simple
+[init]
+	defaultBranch = main

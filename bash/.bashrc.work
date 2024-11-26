@@ -178,7 +178,7 @@ alias viber="nohup Viber &"
 
 # ktd qol
 alias ks="ktd status"
-alias kl="ktd status | grep '^ ' | awk '{print \$3}' | fzf | xargs ktd logs"
+alias kl="ktd status | grep '^ ' | awk '{print \$3}' | fzf | xargs ktd logs -n 100"
 alias ke="ktd status | grep '^ ' | awk '{print \$3}' | fzf | xargs -I {} tmux split-window -h 'ktd enter {}'"
 alias ku="ktd status | grep '^ ' | awk '{print \$3}' | fzf | xargs ktd up"
 
