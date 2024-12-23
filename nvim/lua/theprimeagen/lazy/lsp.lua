@@ -31,6 +31,7 @@ return {
                 "pyright",
                 "gopls",
                 "templ",
+                "clangd",
             },
             handlers = {
                 function(server_name) -- default handler (optional)

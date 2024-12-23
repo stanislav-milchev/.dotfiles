@@ -1,10 +1,8 @@
-
 local local_plugins = {
     {
         "harpoon",
         dir = "~/personal/harpoon",
         config = function()
-
             local harpoon = require("harpoon")
 
             harpoon:setup()
@@ -23,7 +21,18 @@ local local_plugins = {
             vim.keymap.set("n", "<leader>l", function() harpoon:list():select(8) end)
         end
     },
+    {
+        dir = "~/personal/plugins/ghnav.nvim",
+        config = function()
+            require("ghnav")
+        end
+    },
+    {
+        dir = "~/personal/plugins/manman.nvim",
+        config = function()
+            require("manman").setup()
+        end
+    }
 }
 
 return local_plugins
-
