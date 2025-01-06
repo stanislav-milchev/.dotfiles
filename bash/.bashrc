@@ -1,3 +1,4 @@
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -73,16 +74,13 @@ xterm*|rxvt*)
 esac
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+alias ls='ls --color=auto'
+#alias dir='dir --color=auto'
+#alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -119,29 +117,46 @@ fi
 
 
 
-alias vpn='sudo openvpn --config ${HOME}/.cert/client-edited-mfa.ovpn --auth-user-pass ${HOME}/.cert/client-edited-mfa.credentials'
-alias vpn2='openvpn2 --config ${HOME}/apps/vpn-config/vpn.ovpn --auth-user-pass ${HOME}/.cert/client-edited-mfa.credentials'
+alias vpn='openvpn2 --config ${HOME}/apps/vpn-config/vpn.ovpn --auth-user-pass ${HOME}/.cert/client-edited-mfa.credentials'
 alias lc='tac ~/apps/skuscraper/output.txt | grep -B 27 -A 12 -m 1 elapsed_time_seconds | tac'
 
 
 
-export PATH=/opt/viber/:/usr/bin:/usr/bin:/usr/bin:/usr/bin:/home/stanislav/.pyenv/shims:/home/stanislav/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/opt/nvim-linux64/bin
-
-export DOCKER_HOST=unix:///run/user/1000/docker.sock
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#export PATH=/opt/viber/:/usr/bin:/usr/bin:/usr/bin:/usr/bin:/home/stanislav/.pyenv/shims:/home/stanislav/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/opt/nvim-linux64/bin:/usr/local/go/bin:~/.local/bin:~/go/bin:
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+# SOURCING
+# git
+. ~/personal/git/contrib/completion/git-prompt.sh
+
+
+# Colors and styles
+BOLD="\[\033[1m\]"
+RESET="\[\033[0m\]"
+CWD_COLOR="\[\033[0;34m\]"  # Choose your preferred color, 34 is blue
+
+# Git prompt settings
+GIT_PS1_SHOWCOLORHINTS=1
+
+# Set the prompt
+export PS1="${BOLD}${CWD_COLOR}\w${RESET}\$(__git_ps1 ' (%s)')${RESET}\$ "
+
+# linux
+#. /usr/share/autojump/autojump.sh
+# mac
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
 # ALIASES
 alias vim=nvim
 alias vim.config="vim ~/.config/nvim"
 alias vim.bash="vim ~/.bashrc"
+alias vim.i3="vim ~/.config/i3/config"
+alias vim.tmux="vim ~/.tmux.conf"
+alias vim.ala="vim ~/.config/alacritty/alacritty.toml"
 
 alias tls="cd ~/apps/tls-unblocker-pop/; uvicorn app.main:app --reload --port 19904 --host 0.0.0.0 --no-access-log"
 alias sp="cd ~/apps/smart-proxy/; node bin/server.js"
@@ -151,9 +166,30 @@ alias vim.tls="cd ~/apps/tls-unblocker-pop/; vim ."
 alias vim.hydra="cd ~/apps/hydra/; vim ."
 alias vim.smart="cd ~/apps/smart-proxy/; vim ."
 
+alias viber="nohup Viber &"
 
+# ktd qol
+alias ks="ktd status"
+alias kl="ktd status | grep '^ ' | awk '{print \$3}' | fzf | xargs ktd logs -n 100"
+alias ke="ktd status | grep '^ ' | awk '{print \$3}' | fzf | xargs -I {} tmux split-window -h 'ktd enter {}'"
+alias ku="ktd status | grep '^ ' | awk '{print \$3}' | fzf | xargs ktd up"
+
+# git
+alias gs="git status"
+alias gf="git commit --fixup"
+alias gc="git commit -m"
+alias gol="git log --oneline"
+alias gg="git log --oneline --graph"
 
 # ENVs
-
+export SPACE=WORK
+export DEV_SMART_PROXY_PORT=8080
 export SMARTPROXY_TLS_UNBLOCKER_POP_HOST=localhost
 export SMARTPROXY_TLS_UNBLOCKER_POP_PORT=19904
+export SMARTPROXY_BROWSER_FARM_HOST=localhost
+export SMARTPROXY_BROWSER_FARM_PORT=23505
+
+export EDITOR=nvim
+export VISUAL=nvim
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
