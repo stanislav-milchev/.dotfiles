@@ -9,6 +9,16 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
+-- Pin to a specific commit after cloning
+vim.fn.system({
+  "git",
+  "-C",
+  lazypath,
+  "checkout",
+  "31ddbea7c10b6920c9077b66c97951ca8682d5c8",  -- Replace with the desired commit hash
+})
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({

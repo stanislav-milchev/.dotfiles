@@ -9,6 +9,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
+vim.lsp.set_log_level("debug")
 
 vim.opt.wrap = false
 
