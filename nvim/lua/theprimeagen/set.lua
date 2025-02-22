@@ -33,3 +33,5 @@ vim.opt.colorcolumn = "100"
 vim.o.termguicolors = true
 
 vim.opt.splitright = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
