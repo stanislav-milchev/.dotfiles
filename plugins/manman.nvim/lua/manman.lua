@@ -39,15 +39,21 @@ function M.open_man(section)
     vim.api.nvim_buf_set_keymap(buf, "n", "q", "<cmd>bd!<CR>", { noremap = true, silent = true })
 end
 
+-- Define the function to handle the dynamic digit
+function M.manman_dynamic_open()
+    local char = vim.fn.getchar()
+    local digit = tonumber(vim.fn.nr2char(char))
+    if digit and digit >= 1 and digit <= 9 then
+        require('manman').open_man(digit)
+    else
+        vim.cmd("echo 'Invalid input. Press a digit between 1 and 9.'")
+    end
+end
+
 -- Set up key mappings
 function M.setup()
-    vim.api.nvim_set_keymap("n", "m1", "<cmd>lua require('manman').open_man(1)<CR>",
-        { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "m2", "<cmd>lua require('manman').open_man(2)<CR>",
-        { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "m3", "<cmd>lua require('manman').open_man(3)<CR>",
-        { noremap = true, silent = true })
+    -- Create a mapping for `m` followed by a digit
+    vim.api.nvim_set_keymap("n", "<leader>m", ":lua require('manman').manman_dynamic_open()<CR>", { noremap = true, silent = true })
 end
 
 return M
-
