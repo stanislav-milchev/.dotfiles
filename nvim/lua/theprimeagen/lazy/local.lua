@@ -10,6 +10,12 @@ local local_plugins = {
         config = function()
             require("manman").setup()
         end
+    },
+    {
+        dir = "~/personal/plugins/coomit.nvim",
+        config = function()
+            require("coomit").setup()
+        end
     }
 }
 

@@ -91,3 +91,6 @@ require('ghnav')
 vim.api.nvim_set_keymap('n', '<leader>gh', ':lua require("ghnav").open_in_github()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>gh', ':<C-u>lua require("ghnav").open_in_github()<CR>', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<leader>gc', ':lua require("coomit").show_git_commit()<CR>', { noremap = true, silent = true })
+
+
