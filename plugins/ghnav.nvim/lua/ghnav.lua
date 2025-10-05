@@ -15,13 +15,35 @@ local function get_relative_file_path()
         return nil
     end
     local file_path = vim.fn.expand("%:p")
-    return file_path:sub(#repo_root + 2)
+    -- Safely compute relative path
+    local rel_path = vim.fn.fnamemodify(file_path, ":." .. repo_root)
+    return rel_path
 end
 
 local function get_selected_lines()
-    local start_line = vim.fn.line("'<")
-    local end_line = vim.fn.line("'>")
-    return start_line, end_line
+    local start_pos = vim.fn.getpos("'<")[2]
+    local end_pos = vim.fn.getpos("'>")[2]
+
+    if start_pos == 0 or end_pos == 0 or start_pos == end_pos then
+        -- Not a real selection, fallback to current line
+        local line = vim.fn.line(".")
+        return line, line
+    end
+
+    if start_pos > end_pos then
+        start_pos, end_pos = end_pos, start_pos
+    end
+
+    return start_pos, end_pos
+end
+
+local function get_default_branch()
+    local handle = io.popen("git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null")
+    if not handle then return "main" end
+    local ref = handle:read("*a"):gsub("%s+$", "")
+    handle:close()
+    local branch = ref:match("refs/remotes/origin/(.+)")
+    return branch or "main"
 end
 
 local function get_github_url()
@@ -31,24 +53,23 @@ local function get_github_url()
     handle:close()
 
     if origin_url:match("^git@") then
-        -- Convert SSH URL to HTTPS
         origin_url = origin_url:gsub(":", "/"):gsub("git@", "https://")
     elseif not origin_url:match("^https://") then
         vim.notify("Unsupported Git remote URL format", vim.log.levels.ERROR)
         return nil
     end
 
-    -- Remove the .git suffix if present
     origin_url = origin_url:gsub("%.git$", "")
-
     local file_path = get_relative_file_path()
     if not file_path then return nil end
 
     local start_line, end_line = get_selected_lines()
+    local branch = get_default_branch()
+
     if start_line == end_line then
-        return string.format("%s/blob/main/%s#L%d", origin_url, file_path, start_line)
+        return string.format("%s/blob/%s/%s#L%d", origin_url, branch, file_path, start_line)
     else
-        return string.format("%s/blob/main/%s#L%d-L%d", origin_url, file_path, start_line, end_line)
+        return string.format("%s/blob/%s/%s#L%d-L%d", origin_url, branch, file_path, start_line, end_line)
     end
 end
 
@@ -59,20 +80,18 @@ function M.open_in_github()
         return
     end
 
-    -- Copy the URL to the system clipboard
     vim.fn.setreg("+", url)
     vim.notify("Copied to clipboard: " .. url, vim.log.levels.INFO)
 
-    -- Open the URL in the default web browser
     local open_cmd
     local uname = vim.loop.os_uname().sysname
 
     if uname == "Linux" then
-        open_cmd = "xdg-open" -- Linux
+        open_cmd = "xdg-open"
     elseif uname == "Darwin" then
-        open_cmd = "open"     -- macOS
+        open_cmd = "open"
     elseif uname:match("Windows") or vim.fn.has("win32") == 1 then
-        open_cmd = "start"    -- Windows
+        open_cmd = "start"
     else
         vim.notify("Unsupported OS for automatic browser launch", vim.log.levels.WARN)
         return

@@ -36,16 +36,9 @@ TEMPLATE_CONTENTS="
 
 ## Purpose of PR
 
-## Parts of the app this will impact
-
-## Todos
-
-## Additional information
 
 ## Related links
-https://edited.atlassian.net/browse/
-
-"
+https://edited.atlassian.net/browse/"
 
 echo "$TEMPLATE_CONTENTS" > "$TEMP_FILE"
 
